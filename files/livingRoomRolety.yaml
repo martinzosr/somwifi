@@ -1,0 +1,58 @@
+esphome:
+  name: livingroomrolety 
+
+esp8266:
+  board: nodemcuv2
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "UpdateMeSenpai"
+
+ota:
+  password: "UpdateMeSenpai"
+
+wifi:
+  ssid: "alderan"
+  password: "J5j5xcewzzka"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Temsensortest Fallback Hotspot"
+    password: "8CF5eHb5dQ5U"
+
+switch:
+  - platform: gpio
+    pin: 
+      number: D2
+      inverted: false
+    id: up
+    name: "Up"
+    icon: "mdi:gate"
+    on_turn_on:
+    - delay: 500ms
+    - switch.turn_off: up
+
+  - platform: gpio
+    pin: 
+      number: D3
+      inverted: false
+    id: stop
+    name: "Stop"
+    icon: "mdi:gate"
+    on_turn_on:
+    - delay: 500ms
+    - switch.turn_off: stop
+
+  - platform: gpio
+    pin: 
+      number: D4
+      inverted: false
+    id: down
+    name: "Down"
+    icon: "mdi:gate"
+    on_turn_on:
+    - delay: 500ms
+    - switch.turn_off: down
